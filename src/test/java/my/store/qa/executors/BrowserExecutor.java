@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
-abstract class BrowserExecutor {
+public abstract class BrowserExecutor {
 
     private static WebDriver driver;
 
@@ -38,6 +38,7 @@ abstract class BrowserExecutor {
 
     public void goToThePageByUrl(final String url) {
 
+        System.out.println("Go to the page with url: " + url);
         BrowserExecutor.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         BrowserExecutor.driver.navigate().to(url);
 
@@ -57,7 +58,7 @@ abstract class BrowserExecutor {
 
     }
 
-    public void terminateDriver() {
+    public void terminateExecutor() {
 
         BrowserExecutor.driver.manage().deleteAllCookies();
         BrowserExecutor.driver.quit();

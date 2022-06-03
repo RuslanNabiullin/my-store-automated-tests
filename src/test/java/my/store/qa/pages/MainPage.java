@@ -5,21 +5,21 @@ import org.openqa.selenium.By;
 
 import java.time.Duration;
 
-public class MainPage {
+public class MainPage extends BasePage {
 
     private static final By LOGO_MY_STORE = By.cssSelector("[id=\"header_logo\"]");
 
     private static final String MY_STORE_URL = "https://automationpractice.com/index.php";
 
-    public void openMyStore(ChromeExecutor chromeExecutor) {
+    public void openMyStore() {
 
-        chromeExecutor.goToThePageByUrl(MY_STORE_URL);
+        getBrowserExecutor().goToThePageByUrl(MY_STORE_URL);
 
     }
 
-    public boolean isMyStoreLogoDisplayed(ChromeExecutor chromeExecutor) {
+    public boolean isMyStoreLogoDisplayed() {
 
-        return chromeExecutor.isElementDisplayed(LOGO_MY_STORE, Duration.ofSeconds(1));
+        return getBrowserExecutor().isElementDisplayed(LOGO_MY_STORE, Duration.ofSeconds(1));
     }
 
 }
