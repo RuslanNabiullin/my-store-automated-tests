@@ -16,7 +16,7 @@ public class MainPageInteraction {
     @Given("^go to the \"([^\"]*)\"$")
     public void goToThe(String webName) {
 
-        chromeExecutor = new ChromeExecutor();
+        chromeExecutor = new ChromeExecutor(webName);
         mainPage = new MainPage();
 
         mainPage.openMyStore(chromeExecutor);

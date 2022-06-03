@@ -1,48 +1,16 @@
 package my.store.qa.executors;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.time.Duration;
+public class ChromeExecutor extends BrowserExecutor {
 
-public class ChromeExecutor {
+    public ChromeExecutor(final String executorName) {
 
-    private static WebDriver chromeDriver;
-
-    public ChromeExecutor() {
-
-        chromeDriver = createChromeDriver();
-
-    }
-
-    public void goToThePageByUrl(String url) {
-
-        chromeDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        chromeDriver.navigate().to(url);
-
-    }
-
-    public void terminateDriver() {
-
-        chromeDriver.manage().deleteAllCookies();
-        chromeDriver.quit();
-
-    }
-
-    public boolean isElementDisplayed(By element, Duration duration) {
-
-        chromeDriver.manage().timeouts().implicitlyWait(duration);
-
-        try {
-            chromeDriver.findElement(element);
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-
-        return true;
+        super();
+        setDriver(createChromeDriver());
+        setExecutorName(executorName);
 
     }
 
