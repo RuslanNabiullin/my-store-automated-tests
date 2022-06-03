@@ -25,6 +25,13 @@ public class ChromeExecutor {
 
     }
 
+    public void terminateDriver() {
+
+        chromeDriver.manage().deleteAllCookies();
+        chromeDriver.quit();
+
+    }
+
     public boolean isElementDisplayed(By element, Duration duration) {
 
         chromeDriver.manage().timeouts().implicitlyWait(duration);
