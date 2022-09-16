@@ -2,19 +2,17 @@ package my.store.qa.steps.myStoreSteps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.After;
-import my.store.qa.executors.ChromeExecutor;
-import my.store.qa.pages.MainPage;
+import my.store.qa.pages.MyStoreMainPage;
 import org.junit.Assert;
 
 public class MainPageInteraction {
 
-    private MainPage mainPage;
+    private MyStoreMainPage mainPage;
 
     @Given("^go to the My store$")
     public void goToThe() {
 
-        mainPage = new MainPage();
+        mainPage = new MyStoreMainPage();
         mainPage.openMyStore();
 
     }

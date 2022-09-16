@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 import java.time.Duration;
 
-public class MainPage extends BasePage {
+public class MyStoreMainPage extends BasePage {
 
     private static final By LOGO_MY_STORE = By.cssSelector("[id=\"header_logo\"]");
 
