@@ -7,20 +7,20 @@ import org.junit.Assert;
 
 public class MainPageInteraction {
 
-    private MyStoreMainPage mainPage;
+    private MyStoreMainPage myStoreMainPage;
 
     @Given("^go to the My store$")
     public void goToThe() {
 
-        mainPage = new MyStoreMainPage();
-        mainPage.openMyStore();
+        myStoreMainPage = new MyStoreMainPage();
+        myStoreMainPage.openMyStore();
 
     }
 
     @Then("^my store logo is displayed$")
     public void myStoreLogoIsDisplayed() {
 
-        Assert.assertTrue("'My store' logo is not displayed.", mainPage.isMyStoreLogoDisplayed());
+        Assert.assertTrue("'My store' logo is not displayed.", myStoreMainPage.isMyStoreLogoDisplayed());
 
     }
 
