@@ -26,12 +26,12 @@ public abstract class BrowserExecutor {
         return BrowserExecutor.driver;
     }
 
-    public static void setExecutorName(final String executorName) {
+    public void setExecutorName(final String executorName) {
 
         BrowserExecutor.executorName = executorName;
     }
 
-    public static String getExecutorName() {
+    public String getExecutorName() {
 
         return BrowserExecutor.executorName;
     }
