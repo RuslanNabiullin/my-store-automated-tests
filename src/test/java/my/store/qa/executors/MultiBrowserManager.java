@@ -1,8 +1,8 @@
 package my.store.qa.executors;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MultiBrowserManager {
 
@@ -55,8 +55,7 @@ public class MultiBrowserManager {
             currentBrowserExecutor = browserExecutors.size();
         }
 
-        //TODO add ability to create executors for the different browsers according to the runner or config
-        be = new ChromeExecutor("chrome_executor_" + currentBrowserExecutor);
+        be = newBrowserExecutor("browser_executor_" + currentBrowserExecutor);
 
         browserExecutors.add(be);
 
@@ -72,10 +71,26 @@ public class MultiBrowserManager {
             currentBrowserExecutor = browserExecutors.size();
         }
 
-        //TODO add ability to create executors for the different browsers according to the runner or config
-        be = new ChromeExecutor(browserExecutorName);
+        be = newBrowserExecutor(browserExecutorName);
 
         browserExecutors.add(be);
+
+    }
+
+    private static BrowserExecutor newBrowserExecutor(String beName) {
+
+        String browserName = Objects.toString(System.getenv("BROWSER_NAME"), "");
+
+        switch (browserName) {
+
+            case "FIREFOX":
+                return new FirefoxExecutor(beName);
+
+            case "CHROME":
+
+            default:
+                return new ChromeExecutor(beName);
+        }
 
     }
 
