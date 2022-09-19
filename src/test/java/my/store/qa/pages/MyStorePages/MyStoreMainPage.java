@@ -17,7 +17,7 @@ public class MyStoreMainPage extends BasePage {
 
     public void openMyStore() {
 
-        String url = Environment.getMyStoreConfiguration().getMyStorePath();
+        String url = Environment.getMyStoreUrls().getMyStorePath();
         open(url);
 
     }

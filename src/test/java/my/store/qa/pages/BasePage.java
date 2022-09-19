@@ -38,6 +38,13 @@ public class BasePage {
         input.sendKeys(content);
     }
 
+    protected String getElementTextByLocator(By locator) {
+
+        WebElement el = getBrowserExecutor().getWebElementByLocator(locator);
+
+        return el.getText();
+    }
+
     //================================================================================
     // Check elements conditions
     //================================================================================

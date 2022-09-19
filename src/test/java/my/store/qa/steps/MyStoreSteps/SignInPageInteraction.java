@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import my.store.qa.pages.MyStorePages.SignInPage;
+import my.store.qa.world.Environment;
 import org.junit.Assert;
 
 public class SignInPageInteraction {
@@ -29,13 +30,31 @@ public class SignInPageInteraction {
         signInPage.enterEmail(email);
     }
 
+    @And("^error says that email is invalid$")
+    public void errorSaysEmailIsInvalid() {
+
+        String expectedMessage = Environment.getMyStoreTexts().getSignInInvalidEmail();
+        String actualMessage = signInPage.getErrorMessage();
+
+        Assert.assertEquals("Expected error message does not match to the actual.", expectedMessage, actualMessage);
+    }
+
+    @And("^error says that email exists$")
+    public void errorSaysEmailExists() {
+        
+        String expectedMessage = Environment.getMyStoreTexts().getSignInEmailExists();
+        String actualMessage = signInPage.getErrorMessage();
+
+        Assert.assertEquals("Expected error message does not match to the actual.", expectedMessage, actualMessage);
+    }
+
     @Then("^create account error (is|is not) displayed$")
     public void createAccountErrorIsNotDisplayed(String option) {
 
         if (option.equalsIgnoreCase("is")) {
             Assert.assertTrue("Create account Error is not displayed.", signInPage.waitForCreateAccountErrorIsDisplayed());
         } else {
-            Assert.assertFalse("Create account Error is displayed.", signInPage.waitForCreateAccountErrorIsDisplayed());
+            Assert.assertFalse("Create account Error is displayed.", signInPage.waitForCreateAccountErrorIsNotDisplayed());
         }
     }
 
