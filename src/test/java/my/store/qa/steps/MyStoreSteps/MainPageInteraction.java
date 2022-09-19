@@ -1,8 +1,8 @@
-package my.store.qa.steps.myStoreSteps;
+package my.store.qa.steps.MyStoreSteps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import my.store.qa.pages.MyStoreMainPage;
+import my.store.qa.pages.MyStorePages.MyStoreMainPage;
 import org.junit.Assert;
 
 public class MainPageInteraction {
