@@ -3,8 +3,12 @@ package my.store.qa.executors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Objects;
 
 public abstract class BrowserExecutor {
 
@@ -16,12 +20,16 @@ public abstract class BrowserExecutor {
 
     }
 
-    public static void setDriver(final WebDriver driver) {
+    //================================================================================
+    // Get/set
+    //================================================================================
+
+    public void setDriver(final WebDriver driver) {
 
         BrowserExecutor.driver = driver;
     }
 
-    public static WebDriver getDriver() {
+    public WebDriver getDriver() {
 
         return BrowserExecutor.driver;
     }
@@ -36,12 +44,28 @@ public abstract class BrowserExecutor {
         return BrowserExecutor.executorName;
     }
 
+    //================================================================================
+    // Page interaction
+    //================================================================================
+
     public void goToThePageByUrl(final String url) {
 
         System.out.println("Go to the page with url: " + url);
+        //TODO remove hardcoded timeout
         BrowserExecutor.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         BrowserExecutor.driver.navigate().to(url);
 
+    }
+
+    public <V> V waitForElementCondition(ExpectedCondition<V> condition, int timeout) {
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        Objects.requireNonNull(condition);
+        return webDriverWait.until(condition);
+    }
+
+    public WebElement getWebElementByLocator(By locator) {
+
+        return driver.findElement(locator);
     }
 
     public boolean isElementDisplayed(final By element, final Duration duration) {
@@ -57,6 +81,10 @@ public abstract class BrowserExecutor {
         return true;
 
     }
+
+    //================================================================================
+    // Driver interaction
+    //================================================================================
 
     public void terminateExecutor() {
 
