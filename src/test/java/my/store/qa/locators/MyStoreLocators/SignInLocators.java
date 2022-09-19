@@ -4,15 +4,19 @@ import org.openqa.selenium.By;
 
 public class SignInLocators {
 
+    private final By BTN_SUBMIT_CREATE;
+
     private final By LBL_CREATE_ACCOUNT_ERROR;
 
-    private final By BTN_SUBMIT_CREATE;
+    private final By EMAIL_INPUT;
 
     public SignInLocators() {
 
         BTN_SUBMIT_CREATE = By.cssSelector("[id=\"SubmitCreate\"]");
 
         LBL_CREATE_ACCOUNT_ERROR = By.cssSelector("[id=\"create_account_error\"]");
+
+        EMAIL_INPUT = By.cssSelector("[id=\"email_create\"]");
     }
 
     public By getBtnSubmitCreate() {
@@ -25,4 +29,8 @@ public class SignInLocators {
         return LBL_CREATE_ACCOUNT_ERROR;
     }
 
+    public By getEmailInput() {
+
+        return EMAIL_INPUT;
+    }
 }

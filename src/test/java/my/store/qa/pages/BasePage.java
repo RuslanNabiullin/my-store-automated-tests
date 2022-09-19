@@ -24,18 +24,32 @@ public class BasePage {
         getBrowserExecutor().goToThePageByUrl(url);
     }
 
-    protected void clickButtonByLocator(By locator, int timeout) {
+    protected void clickButtonByLocator(By locator) {
 
-        WebElement btn = getBrowserExecutor().waitForElementCondition(ExpectedConditions.elementToBeClickable(locator), timeout);
+        WebElement btn = getBrowserExecutor().getWebElementByLocator(locator);
 
         btn.click();
+    }
+
+    protected void enterTextIntoElementByLocator(By locator, String content) {
+
+        WebElement input = getBrowserExecutor().getWebElementByLocator(locator);
+
+        input.sendKeys(content);
+    }
+
+    protected String getElementTextByLocator(By locator) {
+
+        WebElement el = getBrowserExecutor().getWebElementByLocator(locator);
+
+        return el.getText();
     }
 
     //================================================================================
     // Check elements conditions
     //================================================================================
 
-    protected boolean waitForWemElementIsClickableByLocator(By locator, int timeout) {
+    protected boolean waitForWebElementIsClickableByLocator(By locator, int timeout) {
 
         try {
             getBrowserExecutor().waitForElementCondition(ExpectedConditions.elementToBeClickable(locator), timeout);

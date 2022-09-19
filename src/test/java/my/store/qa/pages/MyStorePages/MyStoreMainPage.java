@@ -17,14 +17,14 @@ public class MyStoreMainPage extends BasePage {
 
     public void openMyStore() {
 
-        String url = Environment.getMyStoreConfiguration().getMyStorePath();
+        String url = Environment.getMyStoreUrls().getMyStorePath();
         open(url);
 
     }
 
     public SignInPage goToSignInPage() {
 
-        clickButtonByLocator(locators.getBtnSignInLocator(), 1);
+        clickButtonByLocator(locators.getBtnSignInLocator());
         return new SignInPage();
     }
 

@@ -1,5 +1,8 @@
 package my.store.qa.world;
 
+import my.store.qa.world.MyStoreCinfiguration.MyStoreTexts;
+import my.store.qa.world.MyStoreCinfiguration.MyStoreUrls;
+
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -17,15 +20,27 @@ public class Environment {
         }
     }
 
-    public static MyStoreConfiguration getMyStoreConfiguration() {
+    public static MyStoreUrls getMyStoreUrls() {
 
         try {
 
-            Properties properties = getProperties("/environments/MyStoreConfiguration.properties");
-            return new MyStoreConfiguration(properties);
+            Properties properties = getProperties("/environments/MyStoreConfiguration/MyStoreUrls.properties");
+            return new MyStoreUrls(properties);
 
         } catch (Exception e) {
-            throw new RuntimeException("Unable to get driver configuration. " + e);
+            throw new RuntimeException("Unable to get My store urls configuration. " + e);
+        }
+    }
+
+    public static MyStoreTexts getMyStoreTexts() {
+
+        try {
+
+            Properties properties = getProperties("/environments/MyStoreConfiguration/MyStoreTexts.properties");
+            return new MyStoreTexts(properties);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to get My store texts configuration. " + e);
         }
     }
 

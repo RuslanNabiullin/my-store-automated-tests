@@ -4,8 +4,6 @@ import my.store.qa.locators.MyStoreLocators.SignInLocators;
 import my.store.qa.pages.BasePage;
 import my.store.qa.world.Environment;
 
-import java.time.Duration;
-
 public class SignInPage extends BasePage {
 
     private final SignInLocators locators;
@@ -15,30 +13,47 @@ public class SignInPage extends BasePage {
         locators = new SignInLocators();
     }
 
+    //================================================================================
+    // Interact with page
+    //================================================================================
+
     public void openSignInPageDirectly() {
 
-        String url = Environment.getMyStoreConfiguration().getSignInPagePath();
+        String url = Environment.getMyStoreUrls().getSignInPagePath();
         open(url);
     }
 
     public void clickCreateAccountButton() {
 
-        clickButtonByLocator(locators.getBtnSubmitCreate(), 1);
+        clickButtonByLocator(locators.getBtnSubmitCreate());
     }
+
+    public void enterEmail(String content) {
+
+        enterTextIntoElementByLocator(locators.getEmailInput(), content);
+    }
+
+    public String getErrorMessage() {
+
+        return getElementTextByLocator(locators.getLblCreateAccountError());
+    }
+
+    //================================================================================
+    // Wait elements
+    //================================================================================
 
     public boolean waitForBtnSubmitCreateIsDisplayed() {
 
-        return waitForWemElementIsClickableByLocator(locators.getBtnSubmitCreate(), 5);
+        return waitForWebElementIsClickableByLocator(locators.getBtnSubmitCreate(), 5);
     }
 
     public boolean waitForCreateAccountErrorIsDisplayed() {
 
-        return waitForWemElementIsClickableByLocator(locators.getLblCreateAccountError(), 10);
+        return waitForWebElementIsClickableByLocator(locators.getLblCreateAccountError(), 10);
     }
 
-    public boolean isBtnSubmitCreateDisplayed() {
+    public boolean waitForCreateAccountErrorIsNotDisplayed() {
 
-        return isElementDisplayedByLocator(locators.getBtnSubmitCreate(), Duration.ofSeconds(1));
+        return waitForWebElementIsClickableByLocator(locators.getLblCreateAccountError(), 1);
     }
-
 }

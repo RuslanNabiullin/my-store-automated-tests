@@ -1,19 +1,18 @@
-package my.store.qa.world;
+package my.store.qa.world.MyStoreCinfiguration;
 
 import java.util.Properties;
 
-public class MyStoreConfiguration {
+public class MyStoreUrls {
 
     private final String myStorePath;
 
     private final String signInPagePath;
 
-    public MyStoreConfiguration(Properties properties) {
+    public MyStoreUrls(Properties properties) {
 
         this.myStorePath = properties.getProperty("my.store.url");
 
         this.signInPagePath = properties.getProperty("my.store.url") + "?" + properties.getProperty("my.store.sign.in.page.url");
-
     }
 
     public String getMyStorePath() {
