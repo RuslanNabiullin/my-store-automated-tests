@@ -33,7 +33,7 @@ public class SignInPage extends BasePage {
 
     public boolean waitForCreateAccountErrorIsDisplayed() {
 
-        return waitForWemElementIsClickableByLocator(locators.getLblCreateAccountError(), 5);
+        return waitForWemElementIsClickableByLocator(locators.getLblCreateAccountError(), 10);
     }
 
     public boolean isBtnSubmitCreateDisplayed() {
