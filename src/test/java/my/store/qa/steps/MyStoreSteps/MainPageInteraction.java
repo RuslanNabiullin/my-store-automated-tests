@@ -18,7 +18,6 @@ public class MainPageInteraction {
 
         myStoreMainPage = new MyStoreMainPage();
         myStoreMainPage.openMyStore();
-
     }
 
     @And("^click sign in button")
@@ -37,7 +36,7 @@ public class MainPageInteraction {
     @Then("^submit/create account button is displayed$")
     public void submitCreateAccountButtonIsDisplayed() {
 
-        Assert.assertTrue("Submit/create account button is displayed", signInPage.waitForBtnSubmitCreateDisplayed());
+        Assert.assertTrue("Submit/create account button is displayed", signInPage.waitForBtnSubmitCreateIsDisplayed());
     }
 
 }
