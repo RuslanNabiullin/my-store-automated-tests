@@ -22,6 +22,12 @@ public class MyStoreMainPage extends BasePage {
 
     }
 
+    public SignInPage goToSignInPage() {
+
+        clickButtonByLocator(locators.getBtnSignInLocator(), 1);
+        return new SignInPage();
+    }
+
     public boolean isMyStoreLogoDisplayed() {
 
         return isElementDisplayedByLocator(locators.getLogoLocator(), Duration.ofSeconds(1));
