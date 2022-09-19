@@ -9,3 +9,9 @@ Feature: My Store - Create Account
     Given open My Store sign in page
     When click create an account button
     Then create account error is displayed
+
+  Scenario: My Store - Create Account - Create account with empty incorrect email address
+    Given open My Store sign in page
+    When enter email address "test"
+    And click create an account button
+    Then create account error is displayed

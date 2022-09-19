@@ -24,7 +24,7 @@ public class MyStoreMainPage extends BasePage {
 
     public SignInPage goToSignInPage() {
 
-        clickButtonByLocator(locators.getBtnSignInLocator(), 1);
+        clickButtonByLocator(locators.getBtnSignInLocator());
         return new SignInPage();
     }
 

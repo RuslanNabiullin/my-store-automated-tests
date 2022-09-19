@@ -23,6 +23,12 @@ public class SignInPageInteraction {
         signInPage.clickCreateAccountButton();
     }
 
+    @And("^enter email address \"([^\"]*)\"$")
+    public void enterEmailAddress(String email) {
+
+        signInPage.enterEmail(email);
+    }
+
     @Then("^create account error (is|is not) displayed$")
     public void createAccountErrorIsNotDisplayed(String option) {
 

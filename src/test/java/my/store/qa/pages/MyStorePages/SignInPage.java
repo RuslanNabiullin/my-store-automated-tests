@@ -15,6 +15,10 @@ public class SignInPage extends BasePage {
         locators = new SignInLocators();
     }
 
+    //================================================================================
+    // Interact with page
+    //================================================================================
+
     public void openSignInPageDirectly() {
 
         String url = Environment.getMyStoreConfiguration().getSignInPagePath();
@@ -23,17 +27,26 @@ public class SignInPage extends BasePage {
 
     public void clickCreateAccountButton() {
 
-        clickButtonByLocator(locators.getBtnSubmitCreate(), 1);
+        clickButtonByLocator(locators.getBtnSubmitCreate());
     }
+
+    public void enterEmail(String content) {
+
+        enterTextIntoElementByLocator(locators.getEmailInput(), content);
+    }
+
+    //================================================================================
+    // Wait elements
+    //================================================================================
 
     public boolean waitForBtnSubmitCreateIsDisplayed() {
 
-        return waitForWemElementIsClickableByLocator(locators.getBtnSubmitCreate(), 5);
+        return waitForWebElementIsClickableByLocator(locators.getBtnSubmitCreate(), 5);
     }
 
     public boolean waitForCreateAccountErrorIsDisplayed() {
 
-        return waitForWemElementIsClickableByLocator(locators.getLblCreateAccountError(), 10);
+        return waitForWebElementIsClickableByLocator(locators.getLblCreateAccountError(), 10);
     }
 
     public boolean isBtnSubmitCreateDisplayed() {
